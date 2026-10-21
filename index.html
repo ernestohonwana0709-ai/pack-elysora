@@ -3,359 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pack Elysora | 21 Dias de Hábitos Saudáveis + Mente Tranquila</title>
+    <title>Pack Elysora | Corpo e Mente em Equilíbrio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-        }
-
         :root {
             --primary: #2d5a27;
-            --primary-light: #eaf2e8;
-            --accent: #d4a373;
-            --dark: #1b261b;
-            --light: #faf9f6;
-            --text: #333333;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --secondary: #e8f0e6;
+            --accent: #d97706;
+            --text: #1f2937;
+            --bg: #f9fafb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--light);
+            background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            padding: 20px 15px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 0 20px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        /* Hero / Headline */
-        header {
-            background: linear-gradient(135deg, #eaf2e8 0%, #fefae0 100%);
-            padding: 50px 20px 40px;
-            text-align: center;
-            border-bottom: 1px solid #e0e8dd;
-        }
-
-        .badge-combo {
-            background-color: var(--accent);
+        .badge {
+            background-color: #f59e0b;
             color: white;
-            padding: 6px 16px;
+            text-align: center;
+            padding: 8px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: bold;
-            letter-spacing: 1px;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 15px;
         }
 
         h1 {
-            color: var(--dark);
-            font-size: 2.2rem;
-            line-height: 1.3;
-            margin-bottom: 15px;
-        }
-
-        p.hero-subtitle {
-            font-size: 1.15rem;
-            color: #555;
-            max-width: 700px;
-            margin: 0 auto 25px;
-        }
-
-        /* E-books Section */
-        .ebooks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .ebook-card {
-            background: white;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .ebook-tag {
-            background-color: var(--primary-light);
             color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            width: fit-content;
-            margin-bottom: 15px;
-        }
-
-        .ebook-title {
-            font-size: 1.4rem;
-            color: var(--dark);
-            margin-bottom: 8px;
-        }
-
-        .ebook-subtitle {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-
-        .ebook-desc {
-            font-size: 0.95rem;
-            color: #444;
-            margin-bottom: 20px;
-        }
-
-        .ebook-list {
-            list-style: none;
-            margin-top: auto;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-
-        .ebook-list li {
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-        }
-
-        .ebook-list li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        /* Target Audience Section */
-        .audience-section {
-            background-color: white;
-            padding: 35px 25px;
-            border-radius: 16px;
-            margin: 40px 0;
-            box-shadow: var(--shadow);
-        }
-
-        .section-title {
+            font-size: 1.75rem;
             text-align: center;
-            font-size: 1.6rem;
-            color: var(--dark);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #4b5563;
+            font-size: 1rem;
             margin-bottom: 25px;
         }
 
-        .audience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .audience-item {
-            background: var(--primary-light);
-            padding: 15px;
+        .card {
+            background: var(--secondary);
             border-radius: 12px;
-            font-size: 0.95rem;
+            padding: 15px;
+            margin-bottom: 15px;
         }
 
-        /* Price Box */
-        .offer-box {
-            background: linear-gradient(135deg, #2d5a27 0%, #1b261b 100%);
+        .card-tag {
+            background: var(--primary);
             color: white;
-            padding: 40px 25px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 40px 0;
-            box-shadow: 0 15px 35px rgba(45, 90, 39, 0.2);
-        }
-
-        .old-price {
-            text-decoration: line-through;
-            opacity: 0.7;
-            font-size: 1.1rem;
-        }
-
-        .new-price {
-            font-size: 2.8rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
             font-weight: bold;
-            color: #fefae0;
-            margin: 10px 0;
         }
 
-        .btn-checkout {
-            display: inline-block;
-            background-color: var(--accent);
+        .card h2 {
+            font-size: 1.2rem;
+            margin: 8px 0;
+            color: var(--primary);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .cta-btn {
+            display: block;
+            width: 100%;
+            background-color: #10b981;
             color: white;
-            font-size: 1.25rem;
+            text-align: center;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 1.2rem;
             font-weight: bold;
             text-decoration: none;
-            padding: 18px 40px;
-            border-radius: 50px;
-            margin-top: 20px;
-            box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4);
-            transition: all 0.3s ease;
+            margin: 25px 0 15px;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+            transition: background 0.3s;
         }
 
-        .btn-checkout:hover {
-            transform: translateY(-2px);
-            background-color: #bc8a5f;
+        .cta-btn:hover {
+            background-color: #059669;
         }
 
-        .guarantee-text {
-            font-size: 0.85rem;
-            margin-top: 15px;
-            opacity: 0.8;
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            margin: 40px 0;
-        }
-
-        .faq-item {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            border: 1px solid #eee;
-        }
-
-        .faq-question {
-            font-weight: bold;
-            color: var(--dark);
-            margin-bottom: 6px;
-        }
-
-        .faq-answer {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        footer {
+        .price {
             text-align: center;
-            padding: 30px;
-            font-size: 0.85rem;
-            color: #888;
-            border-top: 1px solid #e0e0e0;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-top: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-top: 25px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <span class="badge-combo">Oferta Especial do Pack Combo (2 E-books)</span>
-            <h1>Transforme o Seu Corpo, Acalme a Sua Mente e Recupere o Equilíbrio Diário</h1>
-            <p class="hero-subtitle">Um método passo a passo em dois guias práticos para construir uma rotina mais saudável, leve e livre de ansiedade — sem exigências impossíveis ou complicações.</p>
-        </div>
-    </header>
-
     <div class="container">
+        <div class="badge">OFERTA ESPECIAL DO PACK COMBO (2 E-BOOKS)</div>
 
-        <!-- Os Dois E-books -->
-        <div class="ebooks-grid">
-            
-            <!-- Ebook 1 -->
-            <div class="ebook-card">
-                <span class="ebook-tag">E-book 01 · 50 Páginas</span>
-                <h2 class="ebook-title">21 Dias de Hábitos Saudáveis</h2>
-                <p class="ebook-subtitle">Um guia prático para transformares a tua rotina com pequenos passos diários.</p>
-                <p class="ebook-desc">Um hábito por dia, durante 21 dias. Alimentação, movimento, mente e autocuidado num formato prático, fácil de seguir e acompanhado de checklists e receitas.</p>
-                
-                <ul class="ebook-list">
-                    <li>21 desafios diários com passo a passo simples</li>
-                    <li>3 semanas temáticas (Corpo, Mente e Beleza)</li>
-                    <li>Listas de compras e rotinas matinais/noturnas</li>
-                    <li>Receitas fáceis e plano de acompanhamento</li>
-                </ul>
-            </div>
+        <h1>Transforme o Seu Corpo, Acalme a Sua Mente e Recupere o Equilíbrio Diário</h1>
 
-            <!-- Ebook 2 -->
-            <div class="ebook-card">
-                <span class="ebook-tag">E-book 02 · 50 Páginas</span>
-                <h2 class="ebook-title">Mente Tranquila, Vida Equilibrada</h2>
-                <p class="ebook-subtitle">Como combater o stress e recuperar a tranquilidade com técnicas simples.</p>
-                <p class="ebook-desc">Ferramentas práticas e acessíveis para acalmar o corpo, organizar pensamentos e lidar com a pressão do dia a dia com leveza e autocompaixão.</p>
-                
-                <ul class="ebook-list">
-                    <li>26 práticas passo a passo (2 a 10 min por dia)</li>
-                    <li>Kit SOS de 2 minutos contra o stress urgente</li>
-                    <li>Técnicas de respiração, foco e relaxamento</li>
-                    <li>Diário de humor/stress e plano de 7 dias</li>
-                </ul>
-            </div>
+        <p class="subtitle">Um método passo a passo em dois guias práticos para construir uma rotina mais saudável, leve e livre de ansiedade — sem exigências impossíveis ou complicações.</p>
 
+        <div class="card">
+            <span class="card-tag">E-book 01 · 50 Páginas</span>
+            <h2>21 Dias de Hábitos Saudáveis</h2>
+            <p>Um guia prático para transformares a tua rotina com pequenos passos diários. Alimentação, movimento, mente e autocuidado.</p>
         </div>
 
-        <!-- Para quem é -->
-        <div class="audience-section">
-            <h2 class="section-title">Para Quem É Este Pack Especial?</h2>
-            <div class="audience-grid">
-                <div class="audience-item">🌿 Para quem quer cuidar da saúde sem complicações ou dietas radicais.</div>
-                <div class="audience-item">🧘‍♀️ Para quem se sente sobrecarregado(a), ansioso(a) e sem tempo para respirar.</div>
-                <div class="audience-item">🔄 Para quem já tentou mudar hábitos no passado e desistiu por falta de constância.</div>
-                <div class="audience-item">✨ Para quem busca mais clareza, energia, bom sono e equilíbrio emocional diário.</div>
-            </div>
+        <div class="card">
+            <span class="card-tag">E-book 02 · 45 Páginas</span>
+            <h2>Mente Tranquila, Vida Equilibrada</h2>
+            <p>Aprende a gerir o stress, diminuir a ansiedade e reconectar-te contigo mesma com técnicas simples e eficazes de mindfulness.</p>
         </div>
 
-        <!-- Caixa de Oferta -->
-        <div class="offer-box">
-            <h2>Garanta o Pack Elysora Completo Hoje</h2>
-            <p style="margin-top: 5px;">Receba acesso imediato aos 2 E-books em formato PDF (50 páginas cada)</p>
-            
-            <div style="margin-top: 20px;">
-                <span class="old-price">De 30,00 USD</span>
-                <div class="new-price">15,00 USD</div>
-            </div>
+        <div class="price">Por apenas $15,00 USD</div>
 
-            <a href="https://checkout.escalepay.com/5357708" class="btn-checkout" target="_blank">
-                QUERO O MEU PACK AGORA
-            </a>
+        <!-- LINK DO CHECKOUT ESCALEPAY CONECTADO ABAIXO -->
+        <a href="https://checkout.escalepay.com/5357708" class="cta-btn">QUERO COMPRAR AGORA</a>
 
-            <p class="guarantee-text">🔒 Pagamento Seguro • Acesso Imediato no E-mail • 7 Dias de Garantia</p>
+        <div class="footer">
+            &copy; Pack Elysora. Todos os direitos reservados.
         </div>
-
-        <!-- FAQ / Perguntas Frequentes -->
-        <div class="faq-section">
-            <h2 class="section-title">Perguntas Frequentes</h2>
-
-            <div class="faq-item">
-                <div class="faq-question">Como e quando vou receber os materiais?</div>
-                <div class="faq-answer">Assim que o pagamento de 15,00 USD for confirmado, receberá automaticamente o link para descarregar os 2 e-books no seu e-mail em formato PDF.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Preciso de equipamento especial ou ir ao ginásio?</div>
-                <div class="faq-answer">Não! Todos os exercícios, desafios e técnicas de relaxamento são simples e adaptáveis ao seu ritmo e ao seu dia a dia em casa.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Quanto tempo preciso dedicar por dia?</div>
-                <div class="faq-answer">Apenas de 15 a 30 minutos por dia para o guia de hábitos, e de 2 a 10 minutos para as práticas de alívio de stress.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Os guias substituem acompanhamento médico ou psicológico?</div>
-                <div class="faq-answer">Não. São guias educativos de autocuidado e bem-estar. Em caso de dúvidas ou condições de saúde específicas, consulte sempre um profissional.</div>
-            </div>
-        </div>
-
     </div>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Elysora. Todos os direitos reservados.</p>
-        </div>
-    </footer>
 
 </body>
 </html>
