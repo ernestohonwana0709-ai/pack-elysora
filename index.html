@@ -90,32 +90,66 @@
             color: #374151;
         }
 
+        .pricing-card {
+            background: linear-gradient(135deg, #2d5a27 0%, #1e3d1a 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            margin-top: 25px;
+            box-shadow: 0 6px 20px rgba(45, 90, 39, 0.25);
+        }
+
+        .pricing-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .pricing-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .old-price {
+            font-size: 0.95rem;
+            text-decoration: line-through;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #fef08a;
+            margin-bottom: 20px;
+        }
+
         .cta-btn {
             display: block;
             width: 100%;
-            background-color: #10b981;
+            background-color: #d97706;
             color: white;
             text-align: center;
             padding: 16px;
-            border-radius: 10px;
-            font-size: 1.2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
             font-weight: bold;
             text-decoration: none;
-            margin: 25px 0 15px;
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.4);
             transition: background 0.3s;
         }
 
         .cta-btn:hover {
-            background-color: #059669;
+            background-color: #b45309;
         }
 
-        .price {
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--primary);
+        .security-info {
+            font-size: 0.8rem;
+            opacity: 0.85;
             margin-top: 15px;
+            text-align: center;
         }
 
         .footer {
@@ -147,8 +181,21 @@
             <p>Aprende a gerir o stress, diminuir a ansiedade e reconectar-te contigo mesma com técnicas simples e eficazes de mindfulness.</p>
         </div>
 
-        <!-- LINK DO CHECKOUT ESCALEPAY CONECTADO ABAIXO -->
-        <a href="https://checkout.escalepay.com/5357708" class="cta-btn">QUERO COMPRAR AGORA</a>
+        <!-- Bloco de Preço com Estilo e Garantias -->
+        <div class="pricing-card">
+            <div class="pricing-title">Garanta o Pack Elysora Completo Hoje</div>
+            <div class="pricing-desc">Receba acesso imediato aos 2 E-books em formato PDF (50 páginas cada)</div>
+            
+            <div class="old-price">De 17,00 USD</div>
+            <div class="price">09,40 USD</div>
+
+            <!-- LINK DO CHECKOUT ESCALEPAY CONECTADO ABAIXO -->
+            <a href="https://checkout.escalepay.com/5357708" class="cta-btn">QUERO O MEU PACK AGORA</a>
+
+            <div class="security-info">
+                🔒 Pagamento Seguro &bull; Acesso Imediato no E-mail &bull; 7 Dias de Garantia
+            </div>
+        </div>
 
         <div class="footer">
             &copy; Pack Elysora. Todos os direitos reservados.
