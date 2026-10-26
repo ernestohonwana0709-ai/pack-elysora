@@ -1,206 +1,428 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pack Elysora | Corpo e Mente em Equilíbrio</title>
-    <style>
-        :root {
-            --primary: #2d5a27;
-            --secondary: #e8f0e6;
-            --accent: #d97706;
-            --text: #1f2937;
-            --bg: #f9fafb;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELYSORA — App Integrado Saúde & Bem-Estar</title>
+  <style>
+    :root {
+      --primary: #2C4A3E;
+      --primary-light: #3D6454;
+      --accent: #D4A373;
+      --bg: #FAF7F2;
+      --card-bg: #FFFFFF;
+      --text: #1A2E26;
+      --gray: #88968F;
+      --light-gray: #EAE8E3;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            padding: 20px 15px;
-        }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-bottom: 70px;
+    }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 25px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 20px 15px 15px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    header h1 { font-size: 1.6rem; letter-spacing: 3px; font-weight: 700; }
+    header p { font-size: 0.8rem; opacity: 0.85; margin-top: 3px; text-transform: uppercase; letter-spacing: 1px; }
 
-        .badge {
-            background-color: #f59e0b;
-            color: white;
-            text-align: center;
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+    /* BARRA DE NAVEGAÇÃO INFERIOR ESTILO APP MOBILE */
+    nav.bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      border-top: 1px solid var(--light-gray);
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+    .nav-item {
+      border: none;
+      background: none;
+      color: var(--gray);
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      width: 33%;
+      font-weight: 600;
+    }
+    .nav-item .icon { font-size: 1.3rem; }
+    .nav-item.active { color: var(--primary); }
 
-        h1 {
-            color: var(--primary);
-            font-size: 1.75rem;
-            text-align: center;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
+    /* CONTEÚDO PRINCIPAL */
+    main { max-width: 500px; margin: 0 auto; width: 100%; padding: 15px; }
 
-        .subtitle {
-            text-align: center;
-            color: #4b5563;
-            font-size: 1rem;
-            margin-bottom: 25px;
-        }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
 
-        .card {
-            background: var(--secondary);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        .card-tag {
-            background: var(--primary);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
+    /* SELETOR DE PLANO */
+    .plan-banner {
+      background: var(--primary);
+      color: white;
+      padding: 15px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .plan-banner select {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+    .plan-banner select option { color: var(--text); background: white; }
 
-        .card h2 {
-            font-size: 1.2rem;
-            margin: 8px 0;
-            color: var(--primary);
-        }
+    /* CARDS DE RECEITAS COM IMAGENS */
+    .recipe-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .recipe-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .recipe-body { padding: 15px; }
+    .recipe-tags { display: flex; gap: 8px; margin-bottom: 8px; }
+    .tag { background: var(--bg); color: var(--primary); font-size: 0.7rem; font-weight: bold; padding: 4px 8px; border-radius: 6px; }
+    .recipe-title { font-size: 1.1rem; color: var(--primary); font-weight: 700; margin-bottom: 6px; }
+    .recipe-desc { font-size: 0.85rem; color: #555; line-height: 1.4; }
 
-        .card p {
-            font-size: 0.9rem;
-            color: #374151;
-        }
+    /* PLAYER DE EXERCÍCIOS / TREINOS ANIMADOS */
+    .workout-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .anim-display {
+      width: 100%;
+      height: 200px;
+      background: #F0F4F2;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* ANIMAÇÃO ESTILIZADA DE EXERCÍCIO (DUMMY/STICKMAN) */
+    .stickman {
+      width: 40px;
+      height: 80px;
+      position: relative;
+      animation: squat 1.5s infinite alternate ease-in-out;
+    }
+    .head { width: 16px; height: 16px; background: var(--primary); border-radius: 50%; margin: 0 auto; }
+    .body-line { width: 4px; height: 35px; background: var(--primary); margin: 0 auto; }
+    .limbs { width: 30px; height: 4px; background: var(--primary); position: absolute; top: 22px; left: 5px; }
+    .legs { width: 30px; height: 4px; background: var(--primary); position: absolute; bottom: 10px; left: 5px; }
 
-        .pricing-card {
-            background: linear-gradient(135deg, #2d5a27 0%, #1e3d1a 100%);
-            color: white;
-            border-radius: 16px;
-            padding: 25px 20px;
-            text-align: center;
-            margin-top: 25px;
-            box-shadow: 0 6px 20px rgba(45, 90, 39, 0.25);
-        }
+    @keyframes squat {
+      0% { transform: translateY(0) scaleY(1); }
+      100% { transform: translateY(20px) scaleY(0.8); }
+    }
 
-        .pricing-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      width: 100%;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn-primary:active { background: var(--primary-light); }
 
-        .pricing-desc {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-bottom: 15px;
-        }
-
-        .old-price {
-            font-size: 0.95rem;
-            text-decoration: line-through;
-            opacity: 0.8;
-            margin-bottom: 5px;
-        }
-
-        .price {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #fef08a;
-            margin-bottom: 20px;
-        }
-
-        .cta-btn {
-            display: block;
-            width: 100%;
-            background-color: #d97706;
-            color: white;
-            text-align: center;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.4);
-            transition: background 0.3s;
-        }
-
-        .cta-btn:hover {
-            background-color: #b45309;
-        }
-
-        .security-info {
-            font-size: 0.8rem;
-            opacity: 0.85;
-            margin-top: 15px;
-            text-align: center;
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #9ca3af;
-            margin-top: 25px;
-        }
-    </style>
+    /* ABA MENTE & ANIMAÇÃO DE RESPIRAÇÃO */
+    .breath-box {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .orb-container {
+      width: 180px;
+      height: 180px;
+      margin: 25px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .orb {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent) 0%, var(--primary) 100%);
+      box-shadow: 0 0 25px rgba(44, 74, 62, 0.4);
+      transition: transform 4s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .orb.expand { transform: scale(1.7); }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="badge">OFERTA ESPECIAL DO PACK COMBO (2 E-BOOKS)</div>
+  <header>
+    <h1>ELYSORA</h1>
+    <p>Saúde • Bem-Estar • Beleza</p>
+  </header>
 
-        <h1>Transforme o Seu Corpo, Acalme a Sua Mente e Recupere o Equilíbrio Diário</h1>
+  <main>
 
-        <p class="subtitle">Um método passo a passo em dois guias práticos para construir uma rotina mais saudável, leve e livre de ansiedade — sem exigências impossíveis ou complicações.</p>
-
-        <div class="card">
-            <span class="card-tag">E-book 01 · 50 Páginas</span>
-            <h2>21 Dias de Hábitos Saudáveis</h2>
-            <p>Um guia prático para transformares a tua rotina com pequenos passos diários. Alimentação, movimento, mente e autocuidado.</p>
-        </div>
-
-        <div class="card">
-            <span class="card-tag">E-book 02 · 45 Páginas</span>
-            <h2>Mente Tranquila, Vida Equilibrada</h2>
-            <p>Aprende a gerir o stress, diminuir a ansiedade e reconectar-te contigo mesma com técnicas simples e eficazes de mindfulness.</p>
-        </div>
-
-        <!-- Bloco de Preço com Estilo e Garantias -->
-        <div class="pricing-card">
-            <div class="pricing-title">Garanta o Pack Elysora Completo Hoje</div>
-            <div class="pricing-desc">Receba acesso imediato aos 2 E-books em formato PDF (50 páginas cada)</div>
-            
-            <div class="old-price">De 17,00 USD</div>
-            <div class="price">09,40 USD</div>
-
-            <!-- LINK DO CHECKOUT ESCALEPAY CONECTADO ABAIXO -->
-            <a href="https://checkout.escalepay.com/5357708" class="cta-btn">QUERO O MEU PACK AGORA</a>
-
-            <div class="security-info">
-                🔒 Pagamento Seguro &bull; Acesso Imediato no E-mail &bull; 7 Dias de Garantia
-            </div>
-        </div>
-
-        <div class="footer">
-            &copy; Pack Elysora. Todos os direitos reservados.
-        </div>
+    <!-- BANNER DE PLANO GLOBAL -->
+    <div class="plan-banner">
+      <div>
+        <div style="font-size: 0.75rem; opacity: 0.8;">SEU PLANO ATIVO</div>
+        <strong id="plan-display">Jornada 21 Dias</strong>
+      </div>
+      <select id="plan-select" onchange="updatePlan(this.value)">
+        <option value="21">21 Dias</option>
+        <option value="30">30 Dias</option>
+        <option value="90">90 Dias</option>
+      </select>
     </div>
 
+    <!-- ABA 1: ALIMENTAÇÃO -->
+    <section id="tab-food" class="tab-content active">
+
+      <!-- CARD RECEITA 1 -->
+      <div class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Bowl Colorido ELYSORA">
+        <div class="recipe-body">
+          <div class="recipe-tags">
+            <span class="tag">ALMOÇO / JANTAR</span>
+            <span class="tag">25 MIN</span>
+            <span class="tag">RICO EM FIBRAS</span>
+          </div>
+          <div class="recipe-title">Bowl Colorido ELYSORA</div>
+          <div class="recipe-desc">
+            Base de quinoa ou arroz integral, acompanhado de frango grelhado ou grão-de-bico, folhas verdes, cenoura ralada, tomate-cereja, abacate e mix de sementes.
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD RECEITA 2 -->
+      <div class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=600&q=80" alt="Overnight Oats">
+        <div class="recipe-body">
+          <div class="recipe-tags">
+            <span class="tag">CAFÉ DA MANHÃ</span>
+            <span class="tag">5 MIN PREPARO</span>
+          </div>
+          <div class="recipe-title">Overnight Oats & Água Saborizada</div>
+          <div class="recipe-desc">
+            Aveia em flocos hidratada no iogurte natural com chia, leite e canela. Sirva com frutas picadas e acompanhe com água infusionada em pepino, limão e hortelã.
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD RECEITA 3 -->
+      <div class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&q=80" alt="Smoothie Verde">
+        <div class="recipe-body">
+          <div class="recipe-tags">
+            <span class="tag">LANCHE INTELIGENTE</span>
+            <span class="tag">10 MIN</span>
+          </div>
+          <div class="recipe-title">Smoothie Verde & Hummus</div>
+          <div class="recipe-desc">
+            Bata banana, espinafre/couve, maçã, suco de limão e água de coco. Acompanhe com hummus de grão-de-bico artesanal e palitos de cenoura fresca.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ABA 2: TREINOS (ANIMADO E PROFISSIONAL) -->
+    <section id="tab-workout" class="tab-content">
+
+      <div class="workout-card">
+        <div style="text-align: left; margin-bottom: 10px;">
+          <span style="font-size: 0.8rem; color: var(--accent); font-weight: bold;">TREINO DO DIA</span>
+          <h2 style="color: var(--primary); font-size: 1.3rem;">Fortalecimento & Vitalidade</h2>
+        </div>
+
+        <!-- PLAYER DE ANIMAÇÃO DE EXERCÍCIO -->
+        <div class="anim-display">
+          <span id="exercise-name" style="position: absolute; top: 12px; font-weight: bold; font-size: 0.9rem; color: var(--primary);">1. Agachamento Guiado</span>
+          
+          <!-- Boneco Animado em CSS -->
+          <div class="stickman">
+            <div class="head"></div>
+            <div class="body-line"></div>
+            <div class="limbs"></div>
+            <div class="legs"></div>
+          </div>
+
+          <div id="exercise-timer" style="position: absolute; bottom: 10px; font-size: 1.2rem; font-weight: bold; color: var(--accent);">00:45</div>
+        </div>
+
+        <button class="btn-primary" onclick="startWorkoutTimer()">▶ Iniciar Série (45 Segundos)</button>
+      </div>
+
+      <div class="workout-card" style="text-align: left;">
+        <h3 style="font-size: 1rem; color: var(--primary); margin-bottom: 10px;">Série Completa de Hoje</h3>
+        <ul style="list-style: none; font-size: 0.9rem; line-height: 2;">
+          <li>✓ <strong>Alongamento Matinal:</strong> Soltura de pescoço e ombros (5 min)</li>
+          <li>✓ <strong>Caminhada Ativa:</strong> Ritmo constante ao ar livre (15-30 min)</li>
+          <li>✓ <strong>Yoga / Transição Noturna:</strong> Posturas de descompressão da coluna</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- ABA 3: COMBATE AO ESTRESSE -->
+    <section id="tab-mind" class="tab-content">
+
+      <div class="breath-box">
+        <h2 style="color: var(--primary); font-size: 1.2rem;">Meditação & Respiração Guiada</h2>
+        <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">Sincronize sua respiração com a expansão da orbe para acalmar o sistema nervoso.</p>
+
+        <div class="orb-container">
+          <div id="orb" class="orb">Inspire</div>
+        </div>
+
+        <div id="breath-status" style="font-weight: bold; color: var(--primary); margin-bottom: 15px;">Toque abaixo para começar</div>
+        <button class="btn-primary" onclick="toggleBreathing()">Iniciar Ciclo Respiratório</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- NAVEGAÇÃO INFERIOR -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="switchTab('food', this)">
+      <span class="icon">🥗</span>
+      <span>Alimentação</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('workout', this)">
+      <span class="icon">🏃‍♀️</span>
+      <span>Treinos</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('mind', this)">
+      <span class="icon">🧘‍♂️</span>
+      <span>Anti-Estresse</span>
+    </button>
+  </nav>
+
+  <script>
+    // TROCA DE ABAS
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+      document.getElementById('tab-' + tabId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ATUALIZAÇÃO DO PLANO SELECIONADO
+    function updatePlan(days) {
+      document.getElementById('plan-display').innerText = `Plano ${days} Dias`;
+    }
+
+    // TIMER DO TREINO
+    let timerInterval;
+    function startWorkoutTimer() {
+      clearInterval(timerInterval);
+      let seconds = 45;
+      const display = document.getElementById('exercise-timer');
+      
+      timerInterval = setInterval(() => {
+        seconds--;
+        display.innerText = `00:${seconds < 10 ? '0' : ''}${seconds}`;
+        if (seconds <= 0) {
+          clearInterval(timerInterval);
+          display.innerText = "Série Concluída! 🎉";
+        }
+      }, 1000);
+    }
+
+    // ANIMAÇÃO DA RESPIRAÇÃO
+    let breathInterval;
+    let isBreathing = false;
+
+    function toggleBreathing() {
+      const orb = document.getElementById('orb');
+      const status = document.getElementById('breath-status');
+
+      if (isBreathing) {
+        clearInterval(breathInterval);
+        orb.classList.remove('expand');
+        orb.innerText = "Inspire";
+        status.innerText = "Sessão pausada.";
+        isBreathing = false;
+        return;
+      }
+
+      isBreathing = true;
+      let isExpanding = true;
+      orb.classList.add('expand');
+      orb.innerText = "Inspire";
+      status.innerText = "Inspire devagar pelo nariz...";
+
+      breathInterval = setInterval(() => {
+        if (isExpanding) {
+          orb.classList.remove('expand');
+          orb.innerText = "Expire";
+          status.innerText = "Expire lentamente pela boca...";
+          isExpanding = false;
+        } else {
+          orb.classList.add('expand');
+          orb.innerText = "Inspire";
+          status.innerText = "Inspire devagar pelo nariz...";
+          isExpanding = true;
+        }
+      }, 4000);
+    }
+  </script>
 </body>
 </html>
